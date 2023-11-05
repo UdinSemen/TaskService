@@ -44,3 +44,7 @@ func (rep *Repository) DeleteTask(id string) error {
 func (rep *Repository) AddManyTasks(tasks []model.Task) error {
 	return nil
 }
+
+func (rep *Repository) GetAllTasks() ([]model.Task, error) {
+	return nil, nil
+}

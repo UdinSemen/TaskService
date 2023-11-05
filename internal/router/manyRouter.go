@@ -58,3 +58,35 @@ func (r *Router) EditManyTasks() {
 		ctx.JSON(http.StatusOK, addTasks)
 	})
 }
+
+func (r *Router) DeleteManyTasks() {
+	r.GinRouter.DELETE("/many_tasks", func(ctx *gin.Context) {
+		var tasks reqForMany
+
+		if err := ctx.BindJSON(&tasks); err != nil {
+			ShowBadReq(ctx, err)
+			return
+		}
+
+		for _, task := range tasks {
+			if err := r.Repository.DeleteTask(task.Id); err != nil {
+				ShowBadReq(ctx, err)
+				return
+			}
+		}
+
+		ctx.Status(http.StatusOK)
+	})
+}
+
+func (r *Router) GetAllTasks() {
+	r.GinRouter.GET("/many_tasks", func(ctx *gin.Context) {
+		tasks, err := r.Repository.GetAllTasks()
+		if err != nil {
+			ShowBadReq(ctx, err)
+			return
+		}
+
+		ctx.JSON(http.StatusOK, tasks)
+	})
+}

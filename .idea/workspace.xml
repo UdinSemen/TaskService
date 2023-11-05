@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa043096-2a54-4cf0-9090-33ffbce89e10" name="Changes" comment="first func">
-      <change afterPath="$PROJECT_DIR$/internal/config/config.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/mesStorage/memStorage.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/model/taskStruct.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/repository/repository.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/router/manyRouter.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/router/singleRouter.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="aa043096-2a54-4cf0-9090-33ffbce89e10" name="Changes" comment="Add base logic">
       <change beforePath="$PROJECT_DIR$/cmd/taskService/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/taskService/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repository/repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/repository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/router/manyRouter.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/router/manyRouter.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +133,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first func" />
-    <option name="LAST_COMMIT_MESSAGE" value="first func" />
+    <MESSAGE value="Add base logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add base logic" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

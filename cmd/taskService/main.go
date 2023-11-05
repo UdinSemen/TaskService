@@ -23,6 +23,8 @@ func main() {
 	rout.GetTask()
 	rout.AddManyTasks()
 	rout.EditManyTasks()
+	rout.DeleteManyTasks()
+	rout.GetAllTasks()
 
 	adr := fmt.Sprintf("%s:%s", cfg.HttpServer.Address, cfg.HttpServer.Host)
 	err = r.Run(adr)
