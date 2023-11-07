@@ -1,30 +1,39 @@
 package main
 
 import (
-	"TaskService/internal/config"
-	"TaskService/internal/router"
+	"TaskService/internal/app/api/config"
+	"TaskService/internal/app/api/handlers"
+	"errors"
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"log"
+	"net/http"
+	"os"
 )
 
 func main() {
 	cfg := config.MustLoad()
-	r := gin.Default()
 
-	rout, err := router.InitRouter(cfg, r)
+	r, err := handlers.InitRouter(cfg)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	rout.AddTask()
-	rout.EditTask()
-	rout.DeleteTask()
-	rout.GetTask()
-	rout.AddManyTasks()
-	rout.EditManyTasks()
-	rout.DeleteManyTasks()
-	rout.GetAllTasks()
+	srv := &http.Server{
+		Addr:    fmt.Sprintf("%s:%s", cfg.HttpServer.Address, cfg.HttpServer.Host),
+		Handler: r,
+	}
+
+	// create gorutine
+
+	go func() {
+		if err := srv.ListenAndServe(); err != nil && !errors.Is(http.ErrServerClosed, err) {
+			log.Fatalf("listen %s\n", err)
+		}
+	}()
+
+	//todo do it
+	quit := make(chan os.Signal)
+	<-quit
 
 	adr := fmt.Sprintf("%s:%s", cfg.HttpServer.Address, cfg.HttpServer.Host)
 	err = r.Run(adr)
@@ -32,5 +41,4 @@ func main() {
 		log.Fatal(err)
 	}
 
-	r.Handler()
 }

@@ -1,7 +1,7 @@
 package mesStorage
 
 import (
-	cfg "TaskService/internal/config"
+	cfg "TaskService/internal/app/api/config"
 	"database/sql"
 	"fmt"
 	_ "github.com/lib/pq"

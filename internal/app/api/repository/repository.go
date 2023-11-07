@@ -1,9 +1,9 @@
 package repository
 
 import (
-	cfg "TaskService/internal/config"
-	"TaskService/internal/mesStorage"
-	"TaskService/internal/model"
+	cfg "TaskService/internal/app/api/config"
+	"TaskService/internal/app/api/mesStorage"
+	"TaskService/internal/app/api/model"
 	"database/sql"
 	"fmt"
 )
