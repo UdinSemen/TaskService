@@ -14,6 +14,7 @@ type Config struct {
 type HttpServer struct {
 	Address string `yaml:"address"`
 	Host    string `yaml:"host"`
+	TimeOut int    `yaml:"time_out"`
 }
 
 type DbConfig struct {

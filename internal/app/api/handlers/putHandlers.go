@@ -14,7 +14,7 @@ func AddTask(ctx *gin.Context) {
 		return
 	}
 
-	if err := Rep.AddTask(taskReq); err != nil {
+	if err := PgStorage.AddTask(ctx, taskReq); err != nil {
 		ShowBadReq(ctx, err)
 		return
 	}
@@ -31,7 +31,7 @@ func AddManyTasks(ctx *gin.Context) {
 		return
 	}
 
-	err = Rep.AddManyTasks(tasks)
+	err = PgStorage.AddManyTasks(ctx, tasks)
 	if err != nil {
 		ShowBadReq(ctx, err)
 		return

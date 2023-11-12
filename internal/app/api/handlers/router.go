@@ -2,22 +2,22 @@ package handlers
 
 import (
 	cfg "TaskService/internal/app/api/config"
+	stor "TaskService/internal/app/api/mesStorage/pgMemStorage"
 	"TaskService/internal/app/api/model"
-	"TaskService/internal/app/api/repository"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
 // Rep todo Isn't it good?
-var Rep *repository.Repository
+var PgStorage *stor.PgMemStorage
 
 type reqForMany []model.Task
 
 func InitRouter(cfg *cfg.Config) (*gin.Engine, error) {
 	var err error
 	const op = "handlers.InitRouter"
-	Rep, err = repository.InitRepository(cfg)
+	PgStorage, err = stor.NewPgMemStorage(&cfg.DbConfig)
 	if err != nil {
 		return nil, fmt.Errorf("%s: %w", op, err)
 	}

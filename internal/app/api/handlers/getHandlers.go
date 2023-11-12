@@ -7,7 +7,7 @@ import (
 
 func GetTask(ctx *gin.Context) {
 	id := ctx.Query("id")
-	task, err := Rep.GetTask(id)
+	task, err := PgStorage.GetTask(ctx, id)
 	if err != nil {
 		ShowBadReq(ctx, err)
 		return
@@ -17,7 +17,7 @@ func GetTask(ctx *gin.Context) {
 }
 
 func GetAllTasks(ctx *gin.Context) {
-	tasks, err := Rep.GetAllTasks()
+	tasks, err := PgStorage.GetAllTasks(ctx)
 	if err != nil {
 		ShowBadReq(ctx, err)
 		return

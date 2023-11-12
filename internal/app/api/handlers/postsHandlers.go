@@ -14,7 +14,7 @@ func EditTask(ctx *gin.Context) {
 		return
 	}
 
-	task, err := Rep.GetTask(taskReq.Id)
+	task, err := PgStorage.GetTask(ctx, taskReq.Id)
 	if err != nil {
 		ShowBadReq(ctx, err)
 		return
@@ -35,7 +35,7 @@ func EditManyTask(ctx *gin.Context) {
 	}
 
 	for _, task := range tasks {
-		t, err := Rep.GetTask(task.Id)
+		t, err := PgStorage.GetTask(ctx, task.Id)
 		if err != nil {
 			ShowBadReq(ctx, err)
 			return
@@ -45,7 +45,7 @@ func EditManyTask(ctx *gin.Context) {
 		addTasks = append(addTasks, t)
 	}
 
-	err = Rep.AddManyTasks(addTasks)
+	err = PgStorage.AddManyTasks(ctx, addTasks)
 	if err != nil {
 		ShowBadReq(ctx, err)
 		return

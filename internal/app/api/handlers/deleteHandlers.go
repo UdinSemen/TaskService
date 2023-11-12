@@ -7,7 +7,7 @@ import (
 
 func DeleteTask(ctx *gin.Context) {
 	id := ctx.Query("id")
-	if err := Rep.DeleteTask(id); err != nil {
+	if err := PgStorage.DeleteTask(ctx, id); err != nil {
 		ShowBadReq(ctx, err)
 		return
 	}
@@ -24,7 +24,7 @@ func DeleteManyTasks(ctx *gin.Context) {
 	}
 
 	for _, task := range tasks {
-		if err := Rep.DeleteTask(task.Id); err != nil {
+		if err := PgStorage.DeleteTask(ctx, task.Id); err != nil {
 			ShowBadReq(ctx, err)
 			return
 		}
