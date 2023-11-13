@@ -38,7 +38,7 @@ func (mem *MemStorage) AddTask(ctx context.Context, task model.Task) {
 
 func (mem *MemStorage) GetTask(ctx context.Context, id string) (model.Task, error) {
 	mem.RLock()
-	task, err := mem.GetTask(ctx, id)
+	task, err := mem.getTask(ctx, id)
 	mem.RUnlock()
 	if err != nil {
 		return model.Task{}, err
